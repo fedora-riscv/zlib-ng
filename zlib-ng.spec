@@ -4,11 +4,11 @@
 
 Name:		zlib-ng
 Version:	1.9.9
-Release:	0.%{commitdate}git%{shortcommit}%{?dist}
-Summary:	zlib replacement with optimizations
-License:	Zlib
+Release:	0.1.%{commitdate}git%{shortcommit}%{?dist}
+Summary:	Zlib replacement with optimizations
+License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
-Source0:	https://github.com/zlib-ng/zlib-ng/archive/%{commit}.tar.gz
+Source0:	https://github.com/zlib-ng/zlib-ng/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 # Be explicit about the soname in order to avoid unintentional changes.
 %global soname libz-ng.so.1.9.9
@@ -22,7 +22,7 @@ systems.
 
 %package	devel
 Summary:	Development files for %{name}
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description	devel
 The %{name}-devel package contains static libraries and header files for
@@ -43,11 +43,8 @@ ctest -V
 %install
 %make_install
 
-%ldconfig_scriptlets
-
 %files
 %{_libdir}/%{soname}
-%{_libdir}/libz-ng.so
 %{_libdir}/libz-ng.so.1
 %license LICENSE.md
 %doc README.md
@@ -55,9 +52,19 @@ ctest -V
 %files devel
 %{_includedir}/zconf-ng.h
 %{_includedir}/zlib-ng.h
+%{_libdir}/libz-ng.so
 %{_datadir}/pkgconfig/%{name}.pc
-%{_mandir}/man3/%{name}.3.gz
+# Glob the extension in case the compression changes in the future.
+%{_mandir}/man3/%{name}.3.*
 
 %changelog
+* Mon Jul 06 2020 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 1.9.9-0.1.20200609gitfe69810c2
+- Improve the archive name.
+- Starte release at 0.1 as required for prerelease.
+- Make the devel package require an arch-dependent runtime subpackage.
+- Remove %%ldconfig_scriptlets.
+- Glob the man page extension.
+- Move unversioned shared library to the devel subpackage
+
 * Wed Jul 01 2020 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 1.9.9-0.20200609gitfe69810c2
 - Initial commit
