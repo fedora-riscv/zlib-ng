@@ -4,7 +4,7 @@
 
 Name:		zlib-ng
 Version:	1.9.9
-Release:	0.1.%{commitdate}git%{shortcommit}%{?dist}
+Release:	0.2.%{commitdate}git%{shortcommit}%{?dist}
 Summary:	Zlib replacement with optimizations
 License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
@@ -33,15 +33,16 @@ developing application that use %{name}.
 
 %build
 # zlib-ng uses a different macro for library directory.
-%cmake . -DWITH_SANITIZERS=ON -DINSTALL_LIB_DIR=%{_libdir}
-%make_build
+%cmake -DWITH_SANITIZERS=ON -DINSTALL_LIB_DIR=%{_libdir}
+%cmake_build
 
 %check
 # Tests fail when run in parallel.
-ctest -V
+%define _smp_mflags -j1
+%ctest
 
 %install
-%make_install
+%cmake_install
 
 %files
 %{_libdir}/%{soname}
@@ -58,6 +59,9 @@ ctest -V
 %{_mandir}/man3/%{name}.3.*
 
 %changelog
+* Thu Jul 09 2020 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 1.9.9-0.2.20200609gitfe69810c2
+- Replace cmake commands with new cmake macros
+
 * Mon Jul 06 2020 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 1.9.9-0.1.20200609gitfe69810c2
 - Improve the archive name.
 - Starte release at 0.1 as required for prerelease.
