@@ -1,5 +1,5 @@
-%global commit fe69810c265858b7b4242663d51336726f4a98be
-%global commitdate 20200609
+%global commit e58738845fc35943f054befbb0b36234b50e8f94
+%global commitdate 20200912
 %global shortcommit %(c=%{commit}; echo ${c:0:9})
 
 Name:		zlib-ng
@@ -54,11 +54,14 @@ developing application that use %{name}.
 %{_includedir}/zconf-ng.h
 %{_includedir}/zlib-ng.h
 %{_libdir}/libz-ng.so
-%{_datadir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}.pc
 # Glob the extension in case the compression changes in the future.
 %{_mandir}/man3/%{name}.3.*
 
 %changelog
+* Sun Sep 13 2020 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 1.9.9-0.3.20200912gite58738845
+- Update to a newer commit.
+
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.9-0.3.20200609gitfe69810c2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
