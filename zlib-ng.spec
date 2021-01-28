@@ -4,7 +4,7 @@
 
 Name:		zlib-ng
 Version:	1.9.9
-Release:	0.3.%{commitdate}git%{shortcommit}%{?dist}
+Release:	0.4.%{commitdate}git%{shortcommit}%{?dist}
 Summary:	Zlib replacement with optimizations
 License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
@@ -59,6 +59,9 @@ developing application that use %{name}.
 %{_mandir}/man3/%{name}.3.*
 
 %changelog
+* Thu Jan 28 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.9-0.4.20200912gite58738845
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Sun Sep 13 2020 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 1.9.9-0.3.20200912gite58738845
 - Update to a newer commit.
 
