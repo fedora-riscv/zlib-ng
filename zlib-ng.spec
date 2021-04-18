@@ -1,17 +1,17 @@
-%global commit e58738845fc35943f054befbb0b36234b50e8f94
-%global commitdate 20200912
+%global commit 5fe25907ea1da498a75e4b842b9d97ca27acf1ed
+%global commitdate 20210323
 %global shortcommit %(c=%{commit}; echo ${c:0:9})
 
 Name:		zlib-ng
-Version:	1.9.9
-Release:	0.4.%{commitdate}git%{shortcommit}%{?dist}
+Version:	2.0.2
+Release:	1.%{commitdate}git%{shortcommit}%{?dist}
 Summary:	Zlib replacement with optimizations
 License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
 Source0:	https://github.com/zlib-ng/zlib-ng/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 # Be explicit about the soname in order to avoid unintentional changes.
-%global soname libz-ng.so.1.9.9
+%global soname libz-ng.so.2.0.2
 
 ExclusiveArch:	aarch64 i686 ppc64le s390x x86_64
 BuildRequires:	gcc, systemtap-sdt-devel, cmake
@@ -46,7 +46,7 @@ developing application that use %{name}.
 
 %files
 %{_libdir}/%{soname}
-%{_libdir}/libz-ng.so.1
+%{_libdir}/libz-ng.so.2
 %license LICENSE.md
 %doc README.md
 
@@ -55,10 +55,12 @@ developing application that use %{name}.
 %{_includedir}/zlib-ng.h
 %{_libdir}/libz-ng.so
 %{_libdir}/pkgconfig/%{name}.pc
-# Glob the extension in case the compression changes in the future.
-%{_mandir}/man3/%{name}.3.*
 
 %changelog
+* Sun Apr 18 2021 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 2.0.2-1.20210323gite5fe25907e
+- Update to v2.0.2.
+- Remove the manpage that got removed from upstream.
+
 * Thu Jan 28 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.9.9-0.4.20200912gite58738845
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
