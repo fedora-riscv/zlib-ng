@@ -1,17 +1,17 @@
-%global commit 5fe25907ea1da498a75e4b842b9d97ca27acf1ed
-%global commitdate 20210323
+%global commit c69f78bc5e18a0f6de2dcbd8af863f59a14194f0
+%global commitdate 20210625
 %global shortcommit %(c=%{commit}; echo ${c:0:9})
 
 Name:		zlib-ng
-Version:	2.0.2
-Release:	2.%{commitdate}git%{shortcommit}%{?dist}
+Version:	2.0.5
+Release:	1.%{commitdate}git%{shortcommit}%{?dist}
 Summary:	Zlib replacement with optimizations
 License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
 Source0:	https://github.com/zlib-ng/zlib-ng/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 # Be explicit about the soname in order to avoid unintentional changes.
-%global soname libz-ng.so.2.0.2
+%global soname libz-ng.so.2.0.5
 
 ExclusiveArch:	aarch64 i686 ppc64le s390x x86_64
 BuildRequires:	gcc, systemtap-sdt-devel, cmake
@@ -57,6 +57,9 @@ developing application that use %{name}.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Sat Aug 07 2021 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 2.0.2-5.20210625gitc69f78bc5e
+- Update to v2.0.5.
+
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.2-2.20210323git5fe25907e
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
