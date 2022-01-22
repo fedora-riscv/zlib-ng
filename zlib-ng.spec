@@ -4,7 +4,7 @@
 
 Name:		zlib-ng
 Version:	2.0.5
-Release:	1.%{commitdate}git%{shortcommit}%{?dist}
+Release:	2.%{commitdate}git%{shortcommit}%{?dist}
 Summary:	Zlib replacement with optimizations
 License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
@@ -57,6 +57,9 @@ developing application that use %{name}.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.5-2.20210625gitc69f78bc5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Sat Aug 07 2021 Tulio Magno Quites Machado Filho <tuliom@ascii.art.br> - 2.0.2-5.20210625gitc69f78bc5e
 - Update to v2.0.5.
 
