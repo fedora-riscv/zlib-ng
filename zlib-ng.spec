@@ -12,7 +12,6 @@ Source0:	https://github.com/zlib-ng/zlib-ng/archive/%{version}/%{name}-%{version
 ExclusiveArch:	aarch64 i686 ppc64le s390x x86_64
 BuildRequires:	cmake
 BuildRequires:	gcc
-BuildRequires:	systemtap-sdt-devel
 
 %description
 zlib-ng is a zlib replacement that provides optimizations for "next generation"
