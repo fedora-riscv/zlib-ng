@@ -1,6 +1,6 @@
 Name:		zlib-ng
 Version:	2.0.7
-Release:	1%{?dist}
+Release:	1.rv64%{?dist}
 Summary:	Zlib replacement with optimizations
 License:	zlib
 Url:		https://github.com/zlib-ng/zlib-ng
@@ -9,7 +9,7 @@ Source0:	https://github.com/zlib-ng/zlib-ng/archive/%{version}/%{name}-%{version
 # Be explicit about the soname in order to avoid unintentional changes.
 %global soname libz-ng.so.2
 
-ExclusiveArch:	aarch64 i686 ppc64le s390x x86_64
+ExclusiveArch:	aarch64 i686 ppc64le s390x x86_64 riscv64
 BuildRequires:	cmake
 BuildRequires:	gcc
 
@@ -52,6 +52,9 @@ developing application that use %{name}.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Fri Aug 11 2023 Liu Yang <Yang.Liu.sn@gmail.com> - 2.0.7-1.rv64
+- Add riscv64.
+
 * Tue Jul 11 2023 Tulio Magno Quites Machado Filho <tuliom@redhat.com> - 2.0.7-1
 - Update to v2.0.7
 
